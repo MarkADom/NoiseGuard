@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SoundFlow</string>
+
+    <!-- Noise categories (English) -->
+    <string name="category_quiet">Quiet</string>
+    <string name="category_moderate">Moderate</string>
+    <string name="category_loud">Loud</string>
+    <string name="category_harmful">Harmful</string>
+
+    <!-- Navigation labels (English) -->
+    <string name="nav_monitor">Monitor</string>
+    <string name="nav_history">History</string>
+    <string name="nav_settings">Settings</string>
+</resources>
