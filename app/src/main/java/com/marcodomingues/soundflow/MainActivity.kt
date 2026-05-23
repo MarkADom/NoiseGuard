@@ -1,20 +1,22 @@
-package com.marcodomingues.soundflow
+package com.marcodomingues.noiseguard
 
 import android.os.Bundle
-
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.ComponentActivity
-import com.marcodomingues.soundflow.ui.navigation.SoundFlowNavigation
-import com.marcodomingues.soundflow.ui.theme.SoundFlowTheme
+import com.marcodomingues.noiseguard.ui.navigation.NoiseGuardNavigation
+import com.marcodomingues.noiseguard.ui.theme.NoiseGuardTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
-            SoundFlowTheme {
-                SoundFlowNavigation()
+            NoiseGuardTheme {
+                NoiseGuardNavigation()
             }
         }
     }

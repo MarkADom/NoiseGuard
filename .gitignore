@@ -87,3 +87,9 @@ captures/
 # virtual machine crash logs
 hs_err_pid*
 replay_pid*
+
+# Room schema exports should be committed for migration tracking
+!app/schemas/
+
+# Claude
+.claude
