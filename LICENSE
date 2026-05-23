@@ -1,21 +1,28 @@
-Creative Commons Attribution-NonCommercial 4.0 International License
+Business Source License 1.1
 
-Copyright (c) 2026 Marco Domingues
+Licensor: Marco Domingues
+Licensed Work: NoiseGuard
+Change Date: 2029-01-01
+Change License: MIT
 
-This work is licensed under the Creative Commons 
-Attribution-NonCommercial 4.0 International License.
+Use Limitation:
+The Licensed Work may not be used for Commercial Purposes.
+"Commercial Purposes" means any use intended for or directed 
+toward commercial advantage or monetary compensation, including
+but not limited to:
+- Publishing on any app store (Google Play, Apple App Store, etc.)
+- Using in a commercial product or service
+- Selling or licensing the work
 
 You are free to:
-  Share - copy and redistribute the material in any medium or format
-  Adapt - remix, transform, and build upon the material
+- View, study, and learn from the code
+- Fork and modify for personal, non-commercial use
+- Share with attribution
 
-Under the following terms:
-  Attribution - You must give appropriate credit to the original author.
-  NonCommercial - You may not use the material for commercial purposes.
+On the Change Date (2030-01-01), this license converts
+automatically to MIT, allowing all uses.
 
-You may not apply legal terms or technological measures that legally 
-restrict others from doing anything the license permits.
-
-Full license text: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+Full license text: https://mariadb.com/bsl11/
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+Copyright (c) 2026 Marco Domingues

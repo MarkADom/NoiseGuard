@@ -5,7 +5,7 @@ Open offices run at 65–72 dB. A busy café hits 75. Prolonged exposure above 7
 ![API](https://img.shields.io/badge/API-24%2B-brightgreen?style=for-the-badge)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-purple?style=for-the-badge&logo=kotlin&logoColor=white)
 ![Compose BOM](https://img.shields.io/badge/Compose_BOM-2026.02.01-blue?style=for-the-badge&logo=jetpackcompose&logoColor=white)
-![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/license-BUSL--1.1-red?style=for-the-badge)
 
 <p align="center">
   <img src="docs/screenshots/monitor.png" width="32%" alt="Monitor screen showing live dB readout and circular gauge" />
@@ -20,17 +20,17 @@ Open offices run at 65–72 dB. A busy café hits 75. Prolonged exposure above 7
 
 NoiseGuard reads raw PCM audio via `AudioRecord`, runs RMS amplitude calculation on each buffer, and maps the result to calibrated dB SPL. No recordings stored, no cloud, no account. Just a number and a 24-hour history you can actually query.
 
-It's a portfolio app built to demonstrate modern Android development — Compose, Clean Architecture, Room, coroutines with real dispatcher discipline. The use case happens to be real.
+It's a portfolio app built to demonstrate modern Android development - Compose, Clean Architecture, Room, coroutines with real dispatcher discipline. The use case happens to be real.
 
 ---
 
 ## Features
 
-**Monitoring** — Calibrated dB SPL (RMS + 80 dB offset, clamped 20–120 dB) · 4 noise categories (QUIET / MODERATE / LOUD / HARMFUL) · 270° circular gauge with cyan→magenta arc · LED-style readout with glow effect
+**Monitoring** - Calibrated dB SPL (RMS + 80 dB offset, clamped 20–120 dB) · 4 noise categories (QUIET / MODERATE / LOUD / HARMFUL) · 270° circular gauge with cyan→magenta arc · LED-style readout with glow effect
 
-**History & Analytics** — 24-hour Vico line chart downsampled to 50 points · Morning / Afternoon / Night breakdowns with average dB, peak dB, and peak time · Room-backed, nothing simulated
+**History & Analytics** - 24-hour Vico line chart downsampled to 50 points · Morning / Afternoon / Night breakdowns with average dB, peak dB, and peak time · Room-backed, nothing simulated
 
-**Smart Alerts** — Configurable threshold (50–120 dB) persisted to DataStore · 30-second cooldown (one alert per noise event, not per reading) · Vibration toggle · `POST_NOTIFICATIONS` requested contextually on API 33+
+**Smart Alerts** - Configurable threshold (50–120 dB) persisted to DataStore · 30-second cooldown (one alert per noise event, not per reading) · Vibration toggle · `POST_NOTIFICATIONS` requested contextually on API 33+
 
 ---
 
@@ -51,7 +51,7 @@ It's a portfolio app built to demonstrate modern Android development — Compose
 └─────────────────────────────────────────────────┘
 ```
 
-`NoiseRepository` is a pure Kotlin interface — domain layer has zero Android imports. ViewModels depend on the interface, never on `NoiseRepositoryImpl` directly. Audio processing runs on `Dispatchers.Default` (CPU-bound RMS math, not I/O).
+`NoiseRepository` is a pure Kotlin interface - domain layer has zero Android imports. ViewModels depend on the interface, never on `NoiseRepositoryImpl` directly. Audio processing runs on `Dispatchers.Default` (CPU-bound RMS math, not I/O).
 
 → [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · [docs/ADRs.md](docs/ADRs.md)
 
@@ -80,14 +80,14 @@ The 1.8s is dominated by `AudioRecord` hardware warm-up, not app startup. The ap
 
 ## Quick Start
 
-1. `git clone https://github.com/yourusername/noiseguard.git` and open in Android Studio Hedgehog (2023.1.1) or later — KSP generates the Room DAOs, so the first Gradle sync takes a minute or two
-2. Connect a **physical device** — the emulator mic outputs near-silence, giving you 20 dB regardless of environment
+1. `git clone https://github.com/yourusername/noiseguard.git` and open in Android Studio Hedgehog (2023.1.1) or later - KSP generates the Room DAOs, so the first Gradle sync takes a minute or two
+2. Connect a **physical device** - the emulator mic outputs near-silence, giving you 20 dB regardless of environment
 3. Run. No API keys. No Firebase. Entirely offline.
 
 ---
 
 ## Author
 
-**Marco Domingues** — Android Developer · [GitHub](https://github.com/MarkADom) · [LinkedIn](https://www.linkedin.com/in/marco-dv-domingues/) · marco.a.dom78@gmail.com
+**Marco Domingues** - Android Developer · [GitHub](https://github.com/MarkADom) · [LinkedIn](https://www.linkedin.com/in/marco-dv-domingues/) · marco.a.dom78@gmail.com
 
-*MIT License — see [LICENSE](LICENSE)*
+*MIT License - see [LICENSE](LICENSE)*

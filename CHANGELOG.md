@@ -31,4 +31,6 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 
 ### License
-- Released under CC BY-NC 4.0 (non-commercial use only)
+- Released under Business Source License 1.1 (BUSL-1.1)
+- Free to study and use personally, commercial use prohibited
+- Converts to MIT on 2030-01-01
