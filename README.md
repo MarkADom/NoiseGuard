@@ -5,7 +5,7 @@ Open offices run at 65–72 dB. A busy café hits 75. Prolonged exposure above 7
 ![API](https://img.shields.io/badge/API-24%2B-brightgreen?style=for-the-badge)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-purple?style=for-the-badge&logo=kotlin&logoColor=white)
 ![Compose BOM](https://img.shields.io/badge/Compose_BOM-2026.02.01-blue?style=for-the-badge&logo=jetpackcompose&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-orange?style=for-the-badge)
 
 <p align="center">
   <img src="docs/screenshots/monitor.png" width="32%" alt="Monitor screen showing live dB readout and circular gauge" />

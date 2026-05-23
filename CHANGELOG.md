@@ -28,3 +28,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Vibration alert with independent toggle
 - 3-state `RECORD_AUDIO` permission handling (granted → rationale → denied)
 - `POST_NOTIFICATIONS` requested contextually on API 33+
+
+
+### License
+- Released under CC BY-NC 4.0 (non-commercial use only)
