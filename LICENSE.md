@@ -2,7 +2,7 @@ Business Source License 1.1
 
 Licensor: Marco Domingues
 Licensed Work: NoiseGuard
-Change Date: 2029-01-01
+Change Date: 2030-01-01
 Change License: MIT
 
 Use Limitation:

@@ -64,9 +64,10 @@ It's a portfolio app built to demonstrate modern Android development - Compose, 
 | Jetpack Compose BOM | 2026.02.01 | UI |
 | Room | 2.7.1 | Local persistence |
 | DataStore | 1.1.1 | Scalar preferences |
+| Hilt | 2.56.2 | Dependency injection |
 | Vico Charts | 2.0.0-alpha.28 | History chart |
 | Kotlin Coroutines | 1.9.0 | Async / Flow |
-| Accompanist | 0.34.0 | Runtime permissions |
+| Accompanist | 0.37.3 | Runtime permissions |
 
 ---
 
@@ -80,7 +81,7 @@ The 1.8s is dominated by `AudioRecord` hardware warm-up, not app startup. The ap
 
 ## Quick Start
 
-1. `git clone https://github.com/yourusername/noiseguard.git` and open in Android Studio Hedgehog (2023.1.1) or later - KSP generates the Room DAOs, so the first Gradle sync takes a minute or two
+1. `git clone https://github.com/MarkADom/NoiseGuard.git` and open in Android Studio Meerkat (2025.1.1) or later - AGP 9.x requires it; KSP generates the Room DAOs, so the first Gradle sync takes a minute or two
 2. Connect a **physical device** - the emulator mic outputs near-silence, giving you 20 dB regardless of environment
 3. Run. No API keys. No Firebase. Entirely offline.
 
@@ -90,4 +91,4 @@ The 1.8s is dominated by `AudioRecord` hardware warm-up, not app startup. The ap
 
 **Marco Domingues** - Android Developer · [GitHub](https://github.com/MarkADom) · [LinkedIn](https://www.linkedin.com/in/marco-dv-domingues/) · marco.a.dom78@gmail.com
 
-*MIT License - see [LICENSE](LICENSE)*
+BUSL-1.1 License - see [LICENSE](LICENSE.md)

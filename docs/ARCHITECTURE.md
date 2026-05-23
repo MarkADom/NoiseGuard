@@ -49,6 +49,10 @@ Each buffer read goes through RMS → dB conversion in `AudioAnalyzer`, emitted 
 - **Unidirectional Data Flow** — UI fires events, ViewModel updates state, Compose reacts
 - **Single Source of Truth** — Room is the only persistent store; ViewModels don't cache
 
-## What's Not Here (and Why)
+## Dependency Injection
 
-No Hilt, no multi-module, no WorkManager. With three ViewModels and straightforward dependencies, manual `ViewModelProvider.Factory` keeps every dependency visible in the constructor — no annotation magic, no APK size hit, nothing hidden. I considered Hilt, but for three ViewModels sharing simple deps, the framework overhead outweighs the benefit. If this grows to six ViewModels with shared scoped state, that trade-off flips and Hilt becomes the right call.
+Hilt (`hilt-android 2.56.2`) wires the dependency graph. `AppModule` provides `@Singleton` instances of `NoiseRepository`, `UserPreferences`, `NotificationHelper`, and `NoiseGuardDatabase`. All three ViewModels are `@HiltViewModel` with `@Inject` constructors — no manual factory boilerplate.
+
+The singleton scope matters: without it, each ViewModel constructs its own `NoiseRepositoryImpl`, which means three independent write buffers. Clearing history while monitoring was broken until this was fixed. See [ADR-004](ADRs.md#adr-004-hilt-for-dependency-injection) for the full reasoning.
+
+No multi-module, no WorkManager — neither is warranted at this scale.

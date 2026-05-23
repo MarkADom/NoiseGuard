@@ -37,11 +37,11 @@ Three decisions that shaped how NoiseGuard is built. The non-obvious ones.
 
 ---
 
-## ADR-005: Hilt for Dependency Injection
-**Status:** Accepted · **Date:** 2026-05-22
+## ADR-004: Hilt for Dependency Injection
+**Status:** Accepted | **Date:** 2026-05-22
 
-I picked Hilt over Koin and manual DI. The deciding factor wasn't build time or boilerplate — it was the repository singleton bug: three ViewModels each constructing their own `NoiseRepositoryImpl` meant three independent batch buffers. Clearing history while monitoring was broken.  Hilt's `@Singleton` fixed this with one annotation.
+**Decision:** Hilt (`hilt-android 2.56.2`) for the full dependency graph. `AppModule` provides `@Singleton` instances of `NoiseRepository`, `UserPreferences`, `NotificationHelper`, and `NoiseGuardDatabase`. All three ViewModels use `@HiltViewModel` with `@Inject` constructors.
 
-**What I considered instead:** Koin (simpler setup, runtime resolution) and manual DI (what we had). Manual DI couldn't guarantee a single repository instance without a god-object Application. Koin would have worked but Hilt is the Google standard and shows up in every Android job spec.
+**Why not manual DI or Koin:** Manual DI (what existed before) couldn't guarantee a single `NoiseRepository` instance without a god-object Application class. Three ViewModels each constructing their own `NoiseRepositoryImpl` meant three independent batch buffers — clearing history while monitoring was silently broken. Koin would have worked, but Hilt is the Google standard, integrates directly with KSP and Compose navigation, and appears in every Android job spec.
 
-**Result:** Single repository instance, testable ViewModels, -30 lines of factory boilerplate.
+**Outcome:** Single repository instance guaranteed by `@Singleton`. ViewModels are testable via constructor injection. Removed ~30 lines of factory boilerplate across the three ViewModels.

@@ -10,7 +10,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Core
 - Real-time dB SPL monitoring via `AudioRecord` (RMS formula, 20–120 dB range)
 - 4 noise categories: QUIET · MODERATE · LOUD · HARMFUL
-- Calibrated dB calculation with 82 dB hardware offset
+- Calibrated dB calculation with 80 dB offset (RMS formula, verified in AudioAnalyzerDecibelsTest)
 
 ### UI
 - Circular gauge with 270° cyan→magenta neon arc and peak marker
@@ -22,6 +22,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Room database with timestamp-indexed `NoiseLevelEntity`
 - DataStore for scalar preferences (threshold, toggles, sampling rate)
 - 30-day auto-cleanup via scheduled timestamp query
+- Hilt (2.56.2) for dependency injection — enforces singleton `NoiseRepository` across all ViewModels
 
 ### Alerts
 - Push notifications with 30-second cooldown
