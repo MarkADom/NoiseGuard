@@ -1,6 +1,10 @@
 package com.marcodomingues.noiseguard.ui.screens.settings
 
-import androidx.compose.foundation.background
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+import android.provider.Settings
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,10 +16,13 @@ import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.marcodomingues.noiseguard.BuildConfig
 import com.marcodomingues.noiseguard.ui.theme.DarkPremium
 import com.marcodomingues.noiseguard.ui.theme.NeonColors
 import com.marcodomingues.noiseguard.ui.theme.noiseGuardBackground
@@ -25,6 +32,18 @@ fun SettingsScreen(
     viewModel: SettingsViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+
+    val context = LocalContext.current
+    val hasNotificationPermission = remember {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
+    }
 
     var showAboutDialog by remember { mutableStateOf(false) }
     var showClearConfirmDialog by remember { mutableStateOf(false) }
@@ -68,11 +87,45 @@ fun SettingsScreen(
                             onValueChange = { viewModel.updateNoiseLimit(it) }
                         )
 
-                        SettingToggle(
-                            label = "Push Notifications",
-                            checked = uiState.pushNotificationsEnabled,
-                            onCheckedChange = { viewModel.togglePushNotifications(it) }
-                        )
+                        Column {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "Push Notifications",
+                                    fontSize = 14.sp,
+                                    color = Color.White
+                                )
+                                Switch(
+                                    checked = uiState.pushNotificationsEnabled && hasNotificationPermission,
+                                    onCheckedChange = { enabled ->
+                                        if (!hasNotificationPermission) {
+                                            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                                                putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+                                            }
+                                            context.startActivity(intent)
+                                        } else {
+                                            viewModel.togglePushNotifications(enabled)
+                                        }
+                                    },
+                                    colors = SwitchDefaults.colors(
+                                        checkedThumbColor = Color.White,
+                                        checkedTrackColor = NeonColors.CyanStart,
+                                        uncheckedThumbColor = Color.White.copy(alpha = 0.5f),
+                                        uncheckedTrackColor = Color.White.copy(alpha = 0.2f)
+                                    )
+                                )
+                            }
+                            if (!hasNotificationPermission) {
+                                Text(
+                                    text = "Enable notifications in Android Settings",
+                                    fontSize = 11.sp,
+                                    color = Color.White.copy(alpha = 0.4f)
+                                )
+                            }
+                        }
 
                         SettingToggle(
                             label = "Vibration on Alert",
@@ -148,7 +201,7 @@ fun SettingsScreen(
             // Version info
             item {
                 Text(
-                    text = "Version 1.0.0",
+                    text = "Version ${BuildConfig.VERSION_NAME}",
                     fontSize = 12.sp,
                     color = Color.White.copy(alpha = 0.4f),
                     modifier = Modifier.fillMaxWidth(),
@@ -194,7 +247,7 @@ private fun AboutDialog(onDismiss: () -> Unit) {
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
-                    text = "Version 1.0.0",
+                    text = "Version ${BuildConfig.VERSION_NAME}",
                     fontSize = 13.sp,
                     color = NeonColors.CyanStart
                 )

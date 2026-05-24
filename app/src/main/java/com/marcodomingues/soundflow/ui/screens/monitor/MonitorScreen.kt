@@ -69,6 +69,19 @@ fun MonitorScreen(
         rememberPermissionState(Manifest.permission.POST_NOTIFICATIONS)
     } else null
 
+    var permissionRequested by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        if (!recordAudioPermission.status.isGranted) {
+            permissionRequested = true
+            recordAudioPermission.launchPermissionRequest()
+        }
+        kotlinx.coroutines.delay(500)
+        notificationPermission?.let {
+            if (!it.status.isGranted) it.launchPermissionRequest()
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -93,8 +106,8 @@ fun MonitorScreen(
                 )
             }
 
-            // STATE 2: Denied once — OS will still show the system dialog; explain why first
-            recordAudioPermission.status.shouldShowRationale -> {
+            // STATE 2: Not yet requested, or denied once (OS will show dialog again)
+            !permissionRequested || recordAudioPermission.status.shouldShowRationale -> {
                 PermissionRationaleUI(
                     onRequestPermission = { recordAudioPermission.launchPermissionRequest() }
                 )

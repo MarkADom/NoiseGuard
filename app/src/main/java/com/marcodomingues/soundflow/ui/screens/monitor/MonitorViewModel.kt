@@ -10,6 +10,7 @@ import com.marcodomingues.noiseguard.domain.model.NoiseCategory
 import com.marcodomingues.noiseguard.domain.model.NoiseLevel
 import com.marcodomingues.noiseguard.domain.repository.NoiseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -90,6 +91,8 @@ class MonitorViewModel @Inject constructor(
                         }
                     }
                 }
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: IllegalStateException) {
                 _uiState.update {
                     it.copy(
