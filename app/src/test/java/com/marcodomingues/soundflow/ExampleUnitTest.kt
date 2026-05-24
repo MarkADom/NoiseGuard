@@ -1,4 +1,4 @@
-package com.marcodomingues.soundflow
+package com.marcodomingues.noiseguard
 
 import org.junit.Test
 
