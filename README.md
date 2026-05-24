@@ -2,6 +2,7 @@
 
 Open offices run at 65–72 dB. A busy café hits 75. Prolonged exposure above 70 dB causes hearing fatigue, and most people have no idea how loud their environment actually is. NoiseGuard measures it.
 
+![CI](https://github.com/MarkADom/NoiseGuard/actions/workflows/ci.yml/badge.svg)
 ![API](https://img.shields.io/badge/API-24%2B-brightgreen?style=for-the-badge)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-purple?style=for-the-badge&logo=kotlin&logoColor=white)
 ![Compose BOM](https://img.shields.io/badge/Compose_BOM-2026.02.01-blue?style=for-the-badge&logo=jetpackcompose&logoColor=white)
