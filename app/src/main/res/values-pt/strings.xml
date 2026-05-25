@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Noise categories (Portuguese) -->
+    <string name="category_quiet">Silencioso</string>
+    <string name="category_moderate">Moderado</string>
+    <string name="category_loud">Alto</string>
+    <string name="category_harmful">Prejudicial</string>
+
+    <!-- Navigation labels (Portuguese) -->
+    <string name="nav_monitor">Monitor</string>
+    <string name="nav_history">Histórico</string>
+    <string name="nav_settings">Definições</string>
+</resources>
