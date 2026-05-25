@@ -58,6 +58,25 @@ It's a portfolio app built to demonstrate modern Android development - Compose, 
 
 ---
 
+## Testing
+
+82 tests total — 69 unit and 13 instrumented.
+
+Unit tests run on the JVM, no Android runtime needed. They cover noise
+classification, dB calculation, batch buffer logic, period filtering,
+and settings validation.
+
+Instrumented tests run on a physical device (the emulator mic returns
+~20 dB regardless of environment, which makes audio tests meaningless):
+- `NoiseLevelDaoTest` — 9 tests against an in-memory Room database
+- `NavigationTest` — 4 tests verifying the bottom nav flow
+
+Infrastructure: `HiltTestRunner` swaps the app component for a test
+component; `TestAppModule` provides the in-memory DB; `TestUtils` keeps
+timestamps deterministic.
+
+---
+
 ## Tech Stack
 
 | Library | Version | Purpose |

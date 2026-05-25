@@ -56,3 +56,17 @@ Hilt (`hilt-android 2.56.2`) wires the dependency graph. `AppModule` provides `@
 The singleton scope matters: without it, each ViewModel constructs its own `NoiseRepositoryImpl`, which means three independent write buffers. Clearing history while monitoring was broken until this was fixed. See [ADR-004](ADRs.md#adr-004-hilt-for-dependency-injection) for the full reasoning.
 
 No multi-module, no WorkManager — neither is warranted at this scale.
+
+## Testing
+
+**Unit tests (69)** run on the JVM — no Android runtime, no emulator needed.
+`AudioAnalyzer`, `NoiseRepository`, and ViewModel logic are covered.
+
+**Instrumented tests (13)** run on a physical device:
+- `NoiseLevelDaoTest` — Room DAO queries against an in-memory database
+- `NavigationTest` — Compose navigation via `createAndroidComposeRule<MainActivity>()`
+
+Test infrastructure:
+- `HiltTestRunner` — replaces the default runner, swaps Hilt component for test component
+- `TestAppModule` — provides in-memory Room DB, isolates tests from on-device data
+- `TestUtils` — fixed `BASE_TIMESTAMP` and helpers for deterministic test data
