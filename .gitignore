@@ -91,5 +91,11 @@ replay_pid*
 # Room schema exports should be committed for migration tracking
 !app/schemas/
 
+#DIRENV
+.envrc
+
 # Claude
 .claude
+
+# Goolge Play Console
+noiseguard-release.jks
