@@ -1,4 +1,4 @@
-# NoiseGuard
+# DecibelGuard
 
 Real-time ambient noise monitoring for Android.
 
