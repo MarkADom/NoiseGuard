@@ -184,7 +184,7 @@ fun SettingsScreen(
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     ActionButton(
-                        text = "About NoiseGuard",
+                        text = "About DecibelGuard",
                         icon = "📖",
                         onClick = { showAboutDialog = true }
                     )
@@ -239,7 +239,7 @@ private fun AboutDialog(onDismiss: () -> Unit) {
         onDismissRequest = onDismiss,
         title = {
             Text(
-                text = "NoiseGuard",
+                text = "DecibelGuard",
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )
