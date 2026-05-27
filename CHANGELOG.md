@@ -5,6 +5,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-05-27
+
+### Fixed
+- Rename display name NoiseGuard → DecibelGuard in permission dialogs (MonitorScreen.kt)
+- Privacy policy URL updated to DecibelGuard repository
+- Version bump: versionCode 3 → 4
+
 ## [1.1.0] - 2026-05-25
 
 ### Added
