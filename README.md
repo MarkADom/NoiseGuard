@@ -1,6 +1,6 @@
-# NoiseGuard
+# DecibelGuard
 
-Open offices run at 65–72 dB. A busy café hits 75. Prolonged exposure above 70 dB causes hearing fatigue, and most people have no idea how loud their environment actually is. NoiseGuard measures it.
+Open offices run at 65–72 dB. A busy café hits 75. Prolonged exposure above 70 dB causes hearing fatigue, and most people have no idea how loud their environment actually is. DecibelGuard measures it.
 
 ![API](https://img.shields.io/badge/API-24%2B-brightgreen?style=for-the-badge)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-purple?style=for-the-badge&logo=kotlin&logoColor=white)
@@ -19,7 +19,7 @@ Open offices run at 65–72 dB. A busy café hits 75. Prolonged exposure above 7
 
 ## What it does
 
-NoiseGuard reads raw PCM audio via `AudioRecord`, runs RMS amplitude calculation on each buffer, and maps the result to calibrated dB SPL. No recordings stored, no cloud, no account. Just a number and a 24-hour history you can actually query.
+DecibelGuard reads raw PCM audio via `AudioRecord`, runs RMS amplitude calculation on each buffer, and maps the result to calibrated dB SPL. No recordings stored, no cloud, no account. Just a number and a 24-hour history you can actually query.
 
 It's a portfolio app built to demonstrate modern Android development - Compose, Clean Architecture, Room, coroutines with real dispatcher discipline. The use case happens to be real.
 
